@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Store, Brain, BarChart3, Users, TrendingUp, Package, DollarSign, RotateCcw, Bell, Database, Network, Layers } from 'lucide-react';
+import { Store, Brain, BarChart3, Users, TrendingUp, Package, DollarSign, RotateCcw, Bell, Database, Network, Layers, Activity, Zap } from 'lucide-react';
 import { EnhancedPromptConsultant } from './components/EnhancedPromptConsultant';
 import { SalesTrendChart } from './components/SalesTrendChart';
 import { CategoryPerformanceChart } from './components/CategoryPerformanceChart';
@@ -15,13 +15,17 @@ import { GenerationAnalysis } from './components/GenerationAnalysis';
 import { DataIngestionPipeline } from './components/DataIngestionPipeline';
 import { CompetitiveIntelligence } from './components/CompetitiveIntelligence';
 import { SystemMapping } from './components/SystemMapping';
+import { RealTimeInsightsDashboard } from './components/RealTimeInsightsDashboard';
+import { MarketIntelligenceEngine } from './components/MarketIntelligenceEngine';
 import { ConsultantResponse } from './types';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('realtime');
   const [consultantResponse, setConsultantResponse] = useState<ConsultantResponse | null>(null);
 
   const tabs = [
+    { id: 'realtime', label: 'Live Intelligence', icon: Activity, gradient: 'from-green-500 to-emerald-500' },
+    { id: 'strategy', label: 'Market Strategy', icon: Zap, gradient: 'from-purple-500 to-pink-500' },
     { id: 'overview', label: 'Sales Overview', icon: BarChart3, gradient: 'from-blue-500 to-cyan-500' },
     { id: 'products', label: 'Product Analytics', icon: Package, gradient: 'from-purple-500 to-pink-500' },
     { id: 'inventory', label: 'Inventory Health', icon: Package, gradient: 'from-amber-500 to-orange-500' },
@@ -53,7 +57,7 @@ function App() {
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   Raymond Intelligence Suite
                 </h1>
-                <p className="text-gray-600 font-medium text-lg">Premium Menswear Analytics & Business Intelligence</p>
+                <p className="text-gray-600 font-medium text-lg">Real-time Market Intelligence & Strategic Business Analytics</p>
               </div>
             </motion.div>
             
@@ -66,7 +70,7 @@ function App() {
                 <div className="text-xl font-bold text-gray-900">Raymond Shivajinagar</div>
                 <div className="text-sm text-gray-600 flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  Premium Menswear Store • Live Analytics
+                  Premium Menswear Store • Live Market Intelligence
                 </div>
               </div>
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl flex items-center justify-center shadow-lg">
@@ -122,6 +126,18 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
+          {activeTab === 'realtime' && (
+            <div className="space-y-8">
+              <RealTimeInsightsDashboard />
+            </div>
+          )}
+
+          {activeTab === 'strategy' && (
+            <div className="space-y-8">
+              <MarketIntelligenceEngine />
+            </div>
+          )}
+
           {activeTab === 'overview' && (
             <div className="space-y-8">
               <SalesTrendChart />
