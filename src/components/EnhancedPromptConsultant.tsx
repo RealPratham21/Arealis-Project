@@ -397,7 +397,7 @@ export const EnhancedPromptConsultant: React.FC<EnhancedPromptConsultantProps> =
                     >
                       <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                       {step}
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -461,7 +461,7 @@ export const EnhancedPromptConsultant: React.FC<EnhancedPromptConsultantProps> =
                 ) : (
                   <Send className="w-5 h-5" />
                 )}
-              </button>
+              </motion.button>
             </div>
           </div>
         </form>
